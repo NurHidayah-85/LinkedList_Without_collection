@@ -6,8 +6,7 @@
 package book;
 
 
-import java.util.Scanner;
-import java.util.LinkedList;
+import java.util.*;
 
 
 /**
@@ -17,7 +16,7 @@ import java.util.LinkedList;
  * 
  * Prepared for PROFESOR MADYA DR NURAZZAH BINTI ABD RAHMAN
  * 
- * LAB 3 (Topic : ArrayList and LinkedList)
+ * LAB 3 (Topic : LinkedList)
 * 
  * Submission date : 16 April 2023
  * Course : CSC508 (Data Structures)
@@ -33,22 +32,22 @@ public class BookApplication
         // Main driver method
         public static void main(String[] args) {
             
-            //MyArrayList<Book> Blist = new MyArrayList<Book>();
+         
            
-            LinkedList <Book> Blinked = new LinkedList <>();
+            LinkedList  Blinked = new LinkedList ();// Create the LinkedList object
             Scanner s = new Scanner (System.in);// Create a Scanner object as input
             
-            //initial attributes
+            //initial attributes //  Input data for object
             String title, author;
             int year,i=0;
             double price;
             String choice;
             
-            System.out.print("Please insert the book information:\n "); 
+            System.out.print("Please insert the book information: "); 
                         
             do{
                                              
-                System.out.print("Title: "); //Prompt title from the user
+                System.out.print("\nTitle: "); //Prompt title from the user
                 title = s.nextLine();
 
                 System.out.print("Publication Year: "); // Prompt year from the user
@@ -64,9 +63,11 @@ public class BookApplication
                 System.out.print("Input: ");
                 choice = s.nextLine();
                 
+                // Create and store data into object
                 Book book = new Book(title, year, price, author);
                 
-                Blinked.add(book);
+                // Insert object at front into linked list
+                Blinked.insertAtBack(book);
               
               
                 
@@ -79,41 +80,28 @@ public class BookApplication
 
               }while (i < Blinked.size());
             
-
-           // Print the objects using toString() method
-           System.out.println("----------------------------");
-           System.out.println("Information books:"+"\n");
-            for (int j=0; j<Blinked.size(); j++) {
-                     System.out.println("Book No." + (j + 1));
-                     System.out.println(Blinked.get(j)); //return item at position index
-            }
             System.out.println("----------------------------");
-            System.out.println("\nThe number of LinkedList size is = " + Blinked.size()); // Display the number of LinkedList size
+            Blinked.print(); // display the elements in the list
+            
+
+          
+            System.out.println("----------------------------");
+            System.out.println("The size of LinkedList is = " + Blinked.size()); // Display the number of LinkedList size
          
    
-            Blinked.removeFirst();//to remove the first element in LinkedList
+            Blinked.removeFromFront();//to remove the first element in LinkedList
              
             System.out.println("----------------------------");
-            System.out.println("LinkedList after deletion of first element:"+"\n");
-            for (int j=0; j<Blinked.size(); j++) {
-                System.out.println("Book No." + (j + 1));
-                System.out.println(Blinked.get(j)); //return item at position index
-            }
+            System.out.println("LinkedList after deletion of first element.");
+            Blinked.print(); // display the elements in the list
             
             
-            Scanner inputdel = new Scanner (System.in);// Create a Scanner object as input
+            /*Scanner inputdel = new Scanner (System.in);// Create a Scanner object as input
             System.out.println("----------------------------");
             System.out.println(" Please enter a number of book element to remove: ");
-            int numdel =Integer.parseInt (inputdel.nextLine()); 
+            int numdel =Integer.parseInt (inputdel.nextLine()); */
            
-            Blinked.remove(Blinked.get(numdel - 1));//remove element by using user input
-            System.out.println("----------------------------");
-            System.out.println("LinkedList after deletion of element :"+numdel+"\n");
-            for (int j=0; j<Blinked.size(); j++) {
-                System.out.println("Book No." + (j + 1));
-                System.out.println(Blinked.get(j)); //return item at position index
-            }
-            
+                       
             
             Scanner inputnew = new Scanner (System.in);// Create a Scanner object as input
             System.out.println(" Please enter a number of book(s) to add: ");
@@ -135,15 +123,12 @@ public class BookApplication
     
                 Book book = new Book(title, year, price, author);
                 
-                Blinked.add(book);
+                Blinked.insertAtBack(book);
             }
             
            System.out.println("----------------------------");
-           System.out.println("The new LinkedList after add new data element:"+"\n");
-            for (int j=0; j<Blinked.size(); j++) {
-                System.out.println("Book No." + (j + 1));
-                System.out.println(Blinked.get(j)); //return item at position index
-            }
+           System.out.println("The new LinkedList after add new data element.");
+           Blinked.print(); // display the elements in the list
              
             
             System.out.println("----------------------------");
